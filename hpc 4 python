@@ -1,0 +1,48 @@
+!pip install cupy-cuda11x
+USE_GPU = False
+
+if USE_GPU:
+    import cupy as xp
+else:
+    import numpy as xp
+
+# User Input
+N = int(input("Enter size of vector/matrix (N): "))
+
+# Input Vectors
+print("Enter elements for Vector A:")
+A = xp.array([int(input(f"A[{i}]: ")) for i in range(N)])
+print("Enter elements for Vector B:")
+B = xp.array([int(input(f"B[{i}]: ")) for i in range(N)])
+
+# Vector Addition
+C = A + B
+
+print("\nVector A:", A)
+print("Vector B:", B)
+print("Addition (A + B):", C)
+
+# Input Matrices
+print("\nEnter elements for Matrix D:")
+D = xp.zeros((N, N), dtype=int)
+for i in range(N):
+    for j in range(N):
+        D[i, j] = int(input(f"D[{i}][{j}]: "))
+
+print("Enter elements for Matrix E:")
+E = xp.zeros((N, N), dtype=int)
+for i in range(N):
+    for j in range(N):
+        E[i, j] = int(input(f"E[{i}][{j}]: "))
+
+# Matrix Multiplication
+F = D @ E
+
+print("\nMatrix D:")
+print(D)
+
+print("\nMatrix E:")
+print(E)
+
+print("\nMultiplication Result (D x E):")
+print(F)
